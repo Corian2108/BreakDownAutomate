@@ -1,0 +1,34 @@
+{
+  "name": "desktop",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.company.formater",
+    "productName": "Report_Formater",
+    "asar": true,
+    "asarUnpack": [
+      "dist/browser/**"
+    ],
+    "files": [
+      "main.js",
+      "preload.js",
+      "dist/browser/**"
+    ],
+    "win": {
+      "target": "portable",
+      "signAndEditExecutable": false
+    }
+  },
+  "keywords": [],
+  "author": "Agustin Ruiz",
+  "license": "ISC",
+  "description": "Formateador de reportes excel offline",
+  "devDependencies": {
+    "electron": "39.2.7"
+  }
+}
