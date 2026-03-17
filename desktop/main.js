@@ -13,6 +13,7 @@ function createWindow() {
     },
   });
   
+  //variables de entorno para desktop
   //dev
   const indexPath = path.join(__dirname, "dist/browser/index.html");
 
