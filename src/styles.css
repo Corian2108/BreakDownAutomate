@@ -1,1 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* =========================
+BASIC RESET
+========================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+DOCUMENT
+========================= */
+
+html,
+body {
+    height: 100%;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+MEDIA
+========================= */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================
+FORMS
+========================= */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* =========================
+TABLES
+========================= */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* =========================
+LISTS
+========================= */
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* =========================
+LINKS
+========================= */
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+DRAG AND DROP FIXES
+========================= */
+
+[cdkDrag] {
+    cursor: grab;
+}
+
+.cdk-drag-dragging {
+    cursor: grabbing !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
