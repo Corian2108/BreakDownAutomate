@@ -1,59 +1,124 @@
 # Breakdownauto
+# 📊 Formateador de Reportes – Demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+Este proyecto es una demostración funcional de un sistema de automatización de reportes basado en un proceso logístico real.
 
-## Development server
+Más que un simple formateador, este sistema está diseñado para **reducir significativamente el tiempo operativo**, automatizando tareas repetitivas de transformación y organización de datos.
 
-To start a local development server, run:
+---
+
+## 🚀 ¿Qué problema resuelve?
+
+En procesos logísticos reales, la generación de reportes puede tomar en promedio:
+
+- ⏱️ **20 minutos manuales**
+  
+Con este sistema:
+
+- ⚡ **~1 minuto automatizado**
+
+Esto se logra mediante:
+
+- Lectura estructurada de archivos Excel
+- Extracción y procesamiento de datos clave
+- Agrupación y consolidación automática
+- Edición de metadata
+- Reordenamiento dinámico de resultados
+- Generación de archivo final listo para envío
+
+---
+
+## 🧠 ¿Cómo funciona?
+
+El flujo es simple:
+
+1. Descargar archivo de ejemplo
+2. Cargar el archivo en el sistema
+3. El sistema procesa automáticamente la información
+4. Revisar / editar metadata
+5. Reordenar filas si es necesario
+6. Descargar el reporte final
+
+---
+
+## 🖥️ Características principales
+
+- Procesamiento automático de reportes
+- Edición de datos adicionales (metadata)
+- Tabla dinámica con reordenamiento (drag & drop)
+- Exportación a Excel
+- Interfaz clara y enfocada en productividad
+- 100% ejecución en el navegador (frontend)
+
+---
+
+## 🔐 Privacidad y seguridad
+
+Este sistema:
+
+- ✅ Funciona completamente en el **lado del cliente (frontend)**
+- ✅ **No envía información a servidores**
+- ✅ **No almacena datos**
+- ✅ **No registra actividad de usuarios**
+
+Toda la información procesada permanece en el entorno local del usuario.
+
+---
+
+## ⚙️ Instalación
 
 ```bash
+npm install
 ng serve
 ```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abrir en:
+http://localhost:4200
 
-## Code scaffolding
+---
+## 💻 Versión de escritorio (opcional)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Este sistema puede adaptarse fácilmente a una versión de escritorio utilizando Electron, permitiendo:
 
-```bash
-ng generate component component-name
-```
+Uso offline
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Distribución interna en empresas
 
-```bash
-ng generate --help
-```
+Mayor control del entorno de ejecución
 
-## Building
+---
 
-To build the project run:
+## 🏢 Contexto real
 
-```bash
-ng build
-```
+Este demo está basado en un proceso logístico real perteneciente a una empresa (anonimizada por confidencialidad), donde:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Se automatiza la transformación de reportes operativos
 
-## Running unit tests
+Se reduce el error humano
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Se optimiza el flujo de envío de información
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## ⚠️ Aviso legal
 
-For end-to-end (e2e) testing, run:
+Este software es propiedad del autor.
 
-```bash
-ng e2e
-```
+Está prohibida su reproducción total o parcial, distribución o uso comercial sin autorización expresa.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+El uso de este sistema y de los archivos generados es responsabilidad exclusiva del usuario.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🌐 Más información / Contacto
+
+Si necesitas una solución similar o personalizada:
+
+👉 https://corian2108.github.io/Agustin-Ruiz/
+
+---
+
+## ✨ Nota final
+
+Este proyecto forma parte de un enfoque más amplio orientado a la automatización de procesos empresariales, reducción de tiempos operativos y mejora de la eficiencia mediante soluciones digitales a medida.

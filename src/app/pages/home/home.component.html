@@ -1,0 +1,260 @@
+<div class="container py-4">
+
+    <!-- Título -->
+    <header class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+            Formateador de Reportes
+        </h1>
+
+        <p class="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
+            Herramienta de demostración que transforma reportes de carga en bruto en un archivo de Excel estructurado
+            siguiendo reglas de negocio predefinidas.
+        </p>
+    </header>
+
+    <!-- File Input -->
+    @if (!fileSelected) {
+    <div>
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-xl mx-auto">
+
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                Cargar reporte de origen
+            </h3>
+
+            <p class="text-gray-600 mb-6">
+                Descargue el archivo de ejemplo para ver el formato esperado y luego cargue su reporte para procesarlo.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 items-center">
+
+                <button (click)="downloadExample()"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                    Descargar reporte de ejemplo
+                </button>
+
+                <label for="fileOrigin"
+                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md cursor-pointer hover:bg-gray-200 transition">
+                    Seleccionar archivo
+                </label>
+
+                <input type="file" id="fileOrigin" accept=".xlsx,.xls" class="hidden" (input)="onFileChange($event)">
+
+            </div>
+
+        </div>
+    </div>
+    } @else {
+    <!-- Result Table -->
+    <div>
+        <div class="mb-4">
+
+            <h3 class="mb-1">
+                Procesamiento completado
+            </h3>
+        </div>
+        <div class="mb-4">
+            <h4 class="mb-1">Datos del reporte</h4>
+            <span class="text-muted small">
+                Verifique y edite los datos del reporte antes de generar el archivo final.
+            </span>
+        </div>
+
+        <div id="generalData" class="card p-4 mb-4">
+            <form [formGroup]="form">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="airline" class="form-label">AIRLINE</label>
+                        <input type="text" formControlName="airline" class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="flight" class="form-label">FLIGHT</label>
+                        <input type="text" formControlName="flight" class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="date" class="form-label">DATE</label>
+                        <input type="date" formControlName="date" class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="origin" class="form-label">ORIGIN</label>
+                        <input type="text" formControlName="origin" class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="flower" class="form-label">FLOWER OF THE DAY</label>
+                        <input type="text" formControlName="flower" class="form-control">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <span class="text-muted small">
+            Revise y ordene las filas antes de descargar el archivo final.
+        </span>
+
+        <div id="dragAndDrop" class="card p-4 mb-4">
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            @for (head of breakDownHeaders; track head){
+                            <th class="text-nowrap"> {{head}} </th>
+                            }
+                        </tr>
+                    </thead>
+
+                    <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+                        @for (row of bdwnTableData; track row) {
+                        <tr cdkDrag class="draggable-row">
+                            <td> {{row.mawb}} </td>
+                            <td> {{row.hawb}} </td>
+                            <td> {{row.stems}} </td>
+                            <td> {{row.farms}} </td>
+                            <td> {{row.flower}} </td>
+                            <td> {{row.qty}} </td>
+                            <td> {{row.bxs}} </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="mt-4 text-end space-x-6">
+            <button class="btn btn-outline-secondary" (click)="resetReport()">
+                Cargar nuevo reporte
+            </button>
+            
+            <button class="btn btn-success px-4" (click)="buildReport()">
+                Descargar reporte
+            </button>
+        </div>
+    </div>
+    }
+
+    <div class="resume mt-12 max-w-3xl mx-auto">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Resumen
+        </h3>
+
+        <p class="text-gray-600 mb-4">
+            Este sistema de demostración reproduce un proceso logístico real utilizado para transformar reportes de
+            carga generados por un sistema interno en un formato de Excel estandarizado listo para ser enviado.
+        </p>
+
+        <p class="text-gray-600 mb-4">
+            La herramienta analiza el archivo de origen, extrae la información relevante y agrupa los datos por
+            finca exportadora y variedad de flor, generando una versión organizada del reporte.
+        </p>
+
+        <p class="text-gray-600 mb-3">
+            Como resultado, el sistema presenta:
+        </p>
+
+        <ul class="list-disc pl-6 text-gray-600 space-y-2 mb-4">
+            <li>
+                Los datos adicionales requeridos por el reporte final, que pueden ser modificados antes de generar
+                el archivo.
+            </li>
+            <li>
+                Una tabla con la información procesada, donde las filas pueden reordenarse según sea necesario.
+            </li>
+        </ul>
+
+        <p class="text-gray-600">
+            Finalmente, el usuario puede descargar un archivo de Excel con el reporte formateado y listo para
+            enviar.
+        </p>
+    </div>
+
+    <div class="instructions mt-12 max-w-3xl mx-auto">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            Instrucciones
+        </h3>
+
+        <ol class="space-y-3 list-decimal pl-6 text-gray-600">
+            <li>
+                Descargue el archivo de reporte de ejemplo.
+            </li>
+
+            <li>
+                (Opcional) Modifique los datos del archivo para probar distintos escenarios.
+            </li>
+
+            <li>
+                Cargue el archivo en el sistema utilizando el selector de archivos.
+            </li>
+
+            <li>
+                El sistema procesará automáticamente la información del reporte.
+            </li>
+
+            <li>
+                Revise y edite los datos adicionales si es necesario.
+            </li>
+
+            <li>
+                Reordene las filas de la tabla según sus necesidades.
+            </li>
+
+            <li>
+                Descargue el archivo final en formato Excel listo para enviar.
+            </li>
+        </ol>
+    </div>
+
+    <div class="disclaimer mt-12 max-w-3xl mx-auto text-sm text-gray-500">
+        <h3 class="text-lg font-semibold text-gray-800 mb-3">
+            Aviso
+        </h3>
+
+        <p class="mb-3">
+            Este sistema es una demostración basada en un proceso logístico real.
+            Todos los datos utilizados en el archivo de ejemplo han sido anonimizados o
+            generados con fines de demostración.
+        </p>
+
+        <p class="mb-3">
+            La aplicación funciona completamente del lado del cliente (en el navegador).
+            Ningún archivo cargado ni información procesada es enviado a servidores externos
+            ni almacenado por el sistema.
+        </p>
+
+        <p>
+            El uso de este sistema y de cualquier archivo generado a partir del mismo es
+            responsabilidad exclusiva del usuario.
+        </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="mt-5 py-4 border-top">
+    <div class="container text-center text-md-start">
+        <div class="row align-items-center">
+            <!-- Copyright -->
+            <div class="col-md-6 mb-2 mb-md-0 text-center text-md-start small text-muted">
+                © 2026 Todos los derechos reservados
+            </div>
+            <!-- Contacto / Web -->
+            <div class="col-md-6 text-center text-md-end">
+                <a href="https://corian2108.github.io/Agustin-Ruiz/" target="_blank"
+                    class="text-decoration-none fw-semibold">
+                    Visitar sitio web
+                </a>
+                <span class="text-muted mx-2">|</span>
+                <span class="text-muted small">
+                    ¿Necesita una solución similar? Contácteme a través de mi sitio web.
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Spinner -->
+<div *ngIf="loading" class="spinner-border text-primary">
+    <span class="sr-only"></span>
+</div>
