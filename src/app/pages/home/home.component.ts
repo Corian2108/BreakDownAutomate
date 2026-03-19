@@ -270,7 +270,7 @@ export class HomeComponent {
 
     this.loading = true
 
-    const template = await fetch('/assets/template.xlsx')
+    const template = await fetch('assets/template.xlsx')
     const buffer = await template.arrayBuffer()
 
     const workbook = new ExcelJS.Workbook()
@@ -318,7 +318,7 @@ export class HomeComponent {
   //descarga documento de prueba
   downloadExample() {
     this.loading = true
-    this.http.get('/assets/EXAMPLE_REPORT.xlsx', { responseType: 'blob' })
+    this.http.get('assets/EXAMPLE_REPORT.xlsx', { responseType: 'blob' })
       .subscribe(blob => {
         saveAs(blob, 'EXAMPLE_REPORT.xlsx');
         this.loading = false
